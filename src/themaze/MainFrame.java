@@ -50,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         gameBoard1.getActionMap().put(moveDown, new moveAction(3));
         gameBoard1.getActionMap().put(changeState, new changeStateAction(1));
         gameBoard1.getActionMap().put(clear, new changeStateAction(2));
-        gameBoard1.getActionMap().put(check, new changeStateAction(2));
+        gameBoard1.getActionMap().put(check, new checkAction());
     }
 
     public void initBoard() {
@@ -197,13 +197,16 @@ public class MainFrame extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             boolean correct = true;
             //Find the selected square that is being hovered over
-            for (Square s : board) {
+            /*for (Square s : board) {
                 if (s.state != s.hiddenState) {
                     correct = false;
                 }
             }
             if (correct) {
                 System.out.println("You're a winner!");
+            }*/
+            for (Square s: board) {
+                s.state = s.hiddenState;
             }
         }
     }
